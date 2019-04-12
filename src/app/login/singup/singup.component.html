@@ -42,9 +42,9 @@
       </div>
 
       <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Sign up</button>
-      <a [routerLink]="['/auth/login']">Login</a>
+      <a [routerLink]="['/auth/login']">Sign in</a>
 
-      <div *ngIf="f.submitted" class="alert alert-danger">
+      <div *ngIf="f.submitted && isCreateFailed" class="alert alert-danger">
         Error: {{errorMessage}}
       </div>
 

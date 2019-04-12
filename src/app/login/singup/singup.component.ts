@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SignUpInfo } from 'src/app/auth/signup-info';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 
@@ -16,6 +15,7 @@ export class SingupComponent implements OnInit {
 
   form: any = {};
   errorMessage = '';
+  isCreateFailed = false;
   private usuario: Usuario;
 
   constructor(
@@ -32,6 +32,7 @@ export class SingupComponent implements OnInit {
 
   onSubmit() {
     this.errorMessage = '';
+    this.isCreateFailed = false;
 
     this.usuario = new Usuario(0, this.form.nombre, this.form.email, this.form.username,
       this.form.password, this.form.fecha);
@@ -45,7 +46,6 @@ export class SingupComponent implements OnInit {
     if (createUsuario) {
       createUsuario.subscribe(
         data => {
-
           Swal.close();
           Swal.fire({
             title: 'Usuario registrado',
@@ -57,11 +57,12 @@ export class SingupComponent implements OnInit {
           });
         },
         error => {
+          Swal.close();
+          this.isCreateFailed = true;
           this.errorMessage = 'Servidor fuera de línea';
           if(error.error.message) {
             this.errorMessage = error.error.message;
           }
-          Swal.close();
         }
       );
     }
