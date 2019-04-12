@@ -5,6 +5,7 @@ export const TOKEN = {
    USERNAME_KEY: 'AuthUsername',
    NOMBRE_KEY: 'AuthNombre',
    EMAIL_KEY: 'AuthEmail',
+   DATE_KEY: 'AuthDate',
    AUTHORITIES_KEY: 'AuthAuthorities'
 }
 

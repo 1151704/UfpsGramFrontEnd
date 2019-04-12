@@ -7,9 +7,9 @@ import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { UsuarioEditarComponent } from './usuario/usuario-editar/usuario-editar.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, children: [
-    { path : 'home', component: PerfilComponent},
-    { path : 'perfil', component: UsuarioEditarComponent}
+  { path: 'app', component: HomeComponent, children: [
+    { path : 'perfil', component: PerfilComponent},
+    { path : 'perfil-update', component: UsuarioEditarComponent}
   ] },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/singup', component: SingupComponent},

@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/core/api.service';
 import { Usuario } from 'src/app/model/usuario.model';
 
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-singup',
@@ -21,14 +22,17 @@ export class SingupComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
+    private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    if (this.tokenStorage.isToken()) {
-      this.router.navigate(['/home']);
-    }
+    this.authService.isLoggedIn().subscribe(data => {
+      if (data) {
+        this.router.navigate(['/app/home']);
+      }
+    })
   }
 
   onSubmit() {

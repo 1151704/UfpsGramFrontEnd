@@ -1,12 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
   <div class="container">
-    <a [routerLink]="[this.router.url]" class="navbar-brand" style="font-family: 'Norican', cursive; font-size: 2.5em">
+    <a [routerLink]="[router.url]" class="navbar-brand"
+    style="font-family: 'Norican', cursive; font-size: 2.5em">
       {{title}}
     </a>
     <ul class="nav navbar-nav mr-auto">
       <li *ngIf="(isLoggedIn | async)" class="nav-item pointer"
-      [routerLink]="[ '/home' ]" routerLinkActive="active">
+      [routerLink]="[ '/app/home' ]" routerLinkActive="active">
         <a class="nav-link">Home</a>
+      </li>
+      <li *ngIf="(isLoggedIn | async)" class="nav-item pointer"
+      [routerLink]="[ '/app/perfil' ]" routerLinkActive="active">
+        <a class="nav-link">Perfil</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

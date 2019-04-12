@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = false;
-    this.tokenStorage.isToken().then(data => {
+    this.authService.isLoggedIn().subscribe(data => {
       if (data) {
         this.isLoggedIn = true;
-        this.router.navigate(['/home']);
+        this.router.navigate(['/app']);
       }
     })
   }
@@ -57,9 +57,8 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
 
           this.authService.isLoggedIn();
-          // this.authService.isLoginSubject.next(true);
 
-          this.router.navigate(['/home']);
+          this.router.navigate(['/app']);
           Swal.close();
         },
         error => {
@@ -73,5 +72,4 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-
 }

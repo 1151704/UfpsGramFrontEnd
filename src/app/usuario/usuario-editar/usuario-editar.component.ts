@@ -69,7 +69,7 @@ export class UsuarioEditarComponent implements OnInit {
             type: 'success'
           }).then((result) => {
             if (result.value) {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/app']);
             }
           });
         },
