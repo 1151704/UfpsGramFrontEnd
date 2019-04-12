@@ -15,14 +15,16 @@ export class HeaderComponent implements OnInit {
   info: JwtResponse;
   title: string = 'Ufpsgram';
   isLoggedIn: Observable<boolean>;
+  router: Router;
 
   isUserLoggedIn: boolean;
 
   constructor(
     private token: TokenStorageService,
-    private router: Router,
+    private _router: Router,
     private authService: AuthService
   ) {
+    this.router = this._router;
   }
 
   ngOnInit() {

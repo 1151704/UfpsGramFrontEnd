@@ -44,7 +44,7 @@
       <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Sign up</button>
       <a [routerLink]="['/auth/login']">Login</a>
 
-      <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+      <div *ngIf="f.submitted" class="alert alert-danger">
         Error: {{errorMessage}}
       </div>
 
