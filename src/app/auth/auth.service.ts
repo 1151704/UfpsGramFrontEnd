@@ -7,6 +7,7 @@ import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 
 import { API_REST, REST, TOKEN } from '../url.constants';
+import { TokenStorageService } from './token-storage.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,7 +23,8 @@ export class AuthService {
 
   isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private token: TokenStorageService ) {
   }
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
@@ -34,7 +36,7 @@ export class AuthService {
   }
 
   private hasToken(): boolean {
-    return !!localStorage.getItem(TOKEN.TOKEN_KEY);
+    return this.token.isToken();
   }
 
   isLoggedIn(): Observable<boolean> {

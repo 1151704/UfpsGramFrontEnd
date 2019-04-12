@@ -17,7 +17,11 @@ export class TokenStorageService {
   }
 
   public isToken() {
-    return this.getToken ? true : false;
+    if (!this.getToken()) {
+      this.signOut();
+      return false;
+    }
+    return true;
   }
 
   public saveToken(token: string) {

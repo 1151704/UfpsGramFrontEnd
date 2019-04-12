@@ -28,13 +28,18 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.tokenStorage.isToken()) {
       this.isLoggedIn = true;
+      this.router.navigate(['/home']);
     }
   }
 
   onSubmit() {
-
+    this.errorMessage = '';
+    this.isLoginFailed = false;
     this.loginInfo = new AuthLoginInfo(this.form.username, this.form.password);
-
+    Swal.fire({
+      title: 'Procesando datos',
+      onBeforeOpen: () => Swal.showLoading()
+    });
     const attemptAuth = this.authService.attemptAuth(this.loginInfo);
 
     if (attemptAuth) {
@@ -50,15 +55,8 @@ export class LoginComponent implements OnInit {
 
           this.authService.isLoginSubject.next(true);
 
-          Swal.fire({
-            title: 'Bienvenido',
-            text: `${data.username} has iniciado sesion con éxito!`,
-            type: 'success'
-          }).then((result) => {
-            if (result.value) {
-              this.router.navigate(['/home']);
-            }
-          });
+          this.router.navigate(['/home']);
+          Swal.close();
         },
         error => {
           this.errorMessage = 'Servidor fuera de línea';
@@ -66,6 +64,7 @@ export class LoginComponent implements OnInit {
             this.errorMessage = error.error.message;
           }
           this.isLoginFailed = true;
+          Swal.close();
         }
       );
     }
