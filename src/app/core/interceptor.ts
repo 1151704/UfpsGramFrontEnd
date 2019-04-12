@@ -2,13 +2,16 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/com
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import { TOKEN } from '../url.constants';
+import { TokenStorageService } from '../auth/token-storage.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
+  constructor(private tokenStorage: TokenStorageService) {  }
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    let token = window.localStorage.getItem(TOKEN.TOKEN_KEY);
+    let token = this.tokenStorage.getToken();
 
     if (token) {
       request = request.clone({

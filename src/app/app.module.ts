@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SingupComponent } from './login/singup/singup.component';
+import { PerfilComponent } from './usuario/perfil/perfil.component';
+import { UsuarioEditarComponent } from './usuario/usuario-editar/usuario-editar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SingupComponent } from './login/singup/singup.component';
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    SingupComponent
+    SingupComponent,
+    PerfilComponent,
+    UsuarioEditarComponent
   ],
   imports: [
     BrowserModule,

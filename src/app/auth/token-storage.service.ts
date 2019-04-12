@@ -1,27 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TOKEN } from '../url.constants';
+import { TOKEN, REST } from '../url.constants';
 import { JwtResponse } from './jwt-response';
+
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
+import { async } from '@angular/core/testing';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
 
+  valido: boolean = false;
+  isLoggedIn: Observable<boolean>;
   private storage = window.sessionStorage;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
+
+
+  }
 
   signOut() {
     this.storage.clear();
   }
 
-  public isToken() {
-    if (!this.getToken()) {
+  async isToken() {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.valido = await this.isLoggedIn.toPromise();
+
+    if (!this.valido) {
       this.signOut();
-      return false;
     }
-    return true;
+    return this.valido;
   }
 
   public saveToken(token: string) {
@@ -67,6 +82,21 @@ export class TokenStorageService {
       this.getNombre(),
       this.getEmail(),
       this.getUsername());
+  }
+
+  public validate() {
+    this.isToken().then(data => {
+      if (!data) {
+        Swal.fire({
+          title: 'Sesión caducada',
+          type: 'info'
+        }).then((result) => {
+          if (result.value) {
+            this.router.navigate(['auth/login']);
+          }
+        });
+      }
+    });
   }
 
 }

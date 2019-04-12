@@ -17,8 +17,6 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
   router: Router;
 
-  isUserLoggedIn: boolean;
-
   constructor(
     private token: TokenStorageService,
     private _router: Router,
@@ -33,7 +31,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.isLoginSubject.next(false);
     this.token.signOut();
     this.router.navigate(['/auth/login']);
   }

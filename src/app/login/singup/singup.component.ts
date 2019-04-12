@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 
-import Swal from 'sweetalert2';
 import { ApiService } from 'src/app/core/api.service';
 import { Usuario } from 'src/app/model/usuario.model';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-singup',

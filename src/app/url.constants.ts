@@ -1,4 +1,4 @@
-export const REST = "https://omarrm-ufpsgram-backend.herokuapp.com/";
+export const REST = 'https://omarrm-ufpsgram-backend.herokuapp.com/';
 export const API_REST = REST+"api/";
 export const TOKEN = {
    TOKEN_KEY: 'AuthToken',
@@ -7,3 +7,5 @@ export const TOKEN = {
    EMAIL_KEY: 'AuthEmail',
    AUTHORITIES_KEY: 'AuthAuthorities'
 }
+
+// "https://omarrm-ufpsgram-backend.herokuapp.com/";
