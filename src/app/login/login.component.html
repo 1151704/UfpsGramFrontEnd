@@ -1,0 +1,28 @@
+<div class=text-center>
+  <form class="form-signin" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <img class="mb-4" src="https://media.istockphoto.com/photos/letter-v-3d-red-isolated-on-white-with-shadow-orthogonal-projection-picture-id688121764?k=6&m=688121764&s=612x612&w=0&h=dPykpX9s2PKNZKbOxXRFzN3ErIfrFIGZUx8sYFTaYkI=" alt="" width="72"
+      height="72">
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" [(ngModel)]="form.username" #username="ngModel" required autofocus />
+    <div *ngIf="f.submitted && username.invalid">
+      <div *ngIf="username.errors.required">El nombre de usuario es requerido</div>
+    </div>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="3" placeholder="Password" required>
+    <div *ngIf="f.submitted && password.invalid">
+      <div *ngIf="password.errors.required">La contraseña es requerida</div>
+      <div *ngIf="password.errors.minlength">La contraseña debe ser mínimo de tres</div>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Sign in</button>
+
+    <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+      Error: {{errorMessage}}
+    </div>
+
+  </form>
+</div>
