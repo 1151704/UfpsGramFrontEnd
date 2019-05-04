@@ -3,23 +3,23 @@
     <img class="mb-4" src="assets/logo.svg" alt="" width="72"
       height="72">
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Iniciar session</h1>
 
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" [(ngModel)]="form.username" #username="ngModel" required autofocus />
+    <label for="inputUsername" class="sr-only">Nombre de usuario</label>
+    <input type="text" id="inputUsername" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel" required autofocus />
     <div *ngIf="f.submitted && username.invalid">
       <div *ngIf="username.errors.required">El nombre de usuario es requerido</div>
     </div>
 
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="3" placeholder="Password" required>
+    <label for="inputPassword" class="sr-only">Contraseña</label>
+    <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="3">
     <div *ngIf="f.submitted && password.invalid">
       <div *ngIf="password.errors.required">La contraseña es requerida</div>
       <div *ngIf="password.errors.minlength">La contraseña debe ser mínimo de tres</div>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Sign in</button>
-    <a [routerLink]="['/auth/singup']">Sign up</a>
+    <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Ingresar</button>
+    <a [routerLink]="['/auth/singup']">Registrarse</a>
 
     <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
       Error: {{errorMessage}}

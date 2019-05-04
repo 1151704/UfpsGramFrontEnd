@@ -35,4 +35,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
+  searchUser(value: string) {
+    this.router.navigate(['/app/buscar/'+value]);
+  }
+
 }

@@ -1,22 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
   <div class="container">
-    <a [routerLink]="[router.url]" class="navbar-brand"
-    style="font-family: 'Norican', cursive; font-size: 2.5em">
+    <a [routerLink]="[router.url]" class="navbar-brand" style="font-family: 'Norican', cursive; font-size: 2.5em">
       {{title}}
     </a>
     <ul class="nav navbar-nav mr-auto">
-      <li *ngIf="(isLoggedIn | async)" class="nav-item pointer"
-      [routerLink]="[ '/app/home' ]" routerLinkActive="active">
-        <a class="nav-link">Home</a>
+      <li *ngIf="(isLoggedIn | async)" class="nav-item pointer" [routerLink]="[ '/app/home' ]"
+        routerLinkActive="active">
+        <a class="nav-link">Inicio</a>
       </li>
-      <li *ngIf="(isLoggedIn | async)" class="nav-item pointer"
-      [routerLink]="[ '/app/perfil' ]" routerLinkActive="active">
+      <li *ngIf="(isLoggedIn | async)" class="nav-item pointer" [routerLink]="[ '/app/perfil' ]"
+        routerLinkActive="active">
         <a class="nav-link">Perfil</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf="(isLoggedIn | async)" class="nav-item pointer">
-        <a class="nav-link" (click)="logout()">Sign out</a>
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+          <input class="form-control mr-sm-2" #search_user (keyup.enter)="searchUser(search_user.value)" type="search" placeholder="Search" aria-label="Search">
+        <!-- </form> -->
+      </li>
+      <li *ngIf="(isLoggedIn | async)" class="nav-item pointer">
+        <a class="nav-link" (click)="logout()">Salir</a>
       </li>
     </ul>
   </div>

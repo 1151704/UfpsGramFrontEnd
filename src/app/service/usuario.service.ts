@@ -17,6 +17,10 @@ export class UsuarioService {
     return this.http.get<Usuario>(this.baseUrl);
   }
 
+  searchUsuarios(filtro: string) {
+    return this.http.get<Usuario[]>(this.baseUrl+"users/"+filtro);
+  }
+
   createUsuario(usuario: Usuario) {
     return this.http.post<Usuario>(this.baseUrl, usuario);
   }

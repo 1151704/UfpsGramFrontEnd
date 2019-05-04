@@ -4,7 +4,7 @@
       <img class="mb-4" src="assets/logo.svg" alt="" width="72"
         height="72">
 
-      <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
 
       <label for="inputNombre" class="sr-only">Nombre</label>
       <input type="text" id="inputNombre" class="form-control" placeholder="Nombre"
@@ -41,8 +41,8 @@
         <div *ngIf="password.errors.minlength">La contraseña debe ser mínimo de tres</div>
       </div>
 
-      <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Sign up</button>
-      <a [routerLink]="['/auth/login']">Sign in</a>
+      <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Registrarse</button>
+      <a [routerLink]="['/auth/login']">Ingresar</a>
 
       <div *ngIf="f.submitted && isCreateFailed" class="alert alert-danger">
         Error: {{errorMessage}}

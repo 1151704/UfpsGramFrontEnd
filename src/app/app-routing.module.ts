@@ -5,11 +5,13 @@ import { HomeComponent } from './home/home.component';
 import { SingupComponent } from './login/singup/singup.component';
 import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { UsuarioEditarComponent } from './usuario/usuario-editar/usuario-editar.component';
+import { BuscarComponent } from './usuario/buscar/buscar.component';
 
 const routes: Routes = [
   { path: 'app', component: HomeComponent, children: [
     { path : 'perfil', component: PerfilComponent},
-    { path : 'perfil-update', component: UsuarioEditarComponent}
+    { path : 'perfil-update', component: UsuarioEditarComponent},
+    { path : 'buscar/:s', component: BuscarComponent}
   ] },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/singup', component: SingupComponent},

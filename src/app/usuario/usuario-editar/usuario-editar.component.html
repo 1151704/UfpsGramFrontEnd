@@ -1,6 +1,6 @@
 <form class="" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
-  <h1 class="h3 mb-3 font-weight-normal">Update account</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Actualizar cuenta</h1>
 
   <label for="inputNombre" class="sr-only">Nombre</label>
   <input type="text" id="inputNombre" class="form-control" placeholder="Nombre" name="nombre" [(ngModel)]="form.nombre"
@@ -23,8 +23,8 @@
     <div *ngIf="fecha.errors.required">La fecha de nacimiento es requerida</div>
   </div>
 
-  <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Save</button>
-  <a [routerLink]="['/app']">Cancel</a>
+  <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Guardar</button>
+  <a [routerLink]="['/app']">Cancelar</a>
 
   <div *ngIf="f.submitted && isCreateFailed" class="alert alert-danger">
     Error: {{errorMessage}}
