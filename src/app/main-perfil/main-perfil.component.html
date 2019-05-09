@@ -1,0 +1,88 @@
+<div>
+  <nav class="teal ">
+      <div class="nav-wrapper container ">
+          <a [routerLink]="[ '/main/publicaciones' ]" class="brand-logo">Ufpsgram</a>
+          <ul class="right">
+              <li><a class="dropdown-trigger" data-target="dropdown1"><i
+                          class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+      </div>
+  </nav>
+  <ul id="dropdown1" class="dropdown-content">
+      <li><a class="modal-trigger pointer" href="#modal-perfil">Cuenta <i class="material-icons">settings</i></a></li>
+      <li class="divider"></li>
+      <li><a (click)="logout()">Cerrar sessión <i class="material-icons">power_settings_new</i></a></li>
+  </ul>
+</div>
+<main class="container">
+  <div class="row valign-wrapper mb0 ">
+      <ul class="collection col s12 grey lighten-5 z-depth-1">
+          <li class="collection-item avatar user-avatar">
+              <img src="assets/image/user-default.png" alt="" class="circle">
+              <span class="title">{{info.username}}</span>
+              <div class="row mb0">
+                  <div class="col s4 center">
+                      <span>0</span>
+                      <p>Publicaciones</p>
+                  </div>
+                  <div class="col s4 center">
+                      <span class="modal-trigger pointer" href="#modal-seguidores">{{seguidores.length}}</span>
+                      <p>Seguidores</p>
+                  </div>
+                  <div class="col s4 center">
+                      <span class="modal-trigger pointer" href="#modal-siguiendo">{{siguiendo.length}}</span>
+                      <p>Siguiendo</p>
+                  </div>
+              </div>
+              <p style="transform: translateX(-72px);">{{info.nombre}}</p>
+              <blockquote class="teal" style="transform: translateX(-72px);">{{info.email}}</blockquote>
+          </li>
+      </ul>
+  </div>
+
+  <div class="row valign-wrapper mb0 ">
+      <div class="col s12 z-depth-1 teal lighten-3">
+          <div class="teal mt10 mb10 lighten-3">Módulo de publicaciones sin realizar</div>
+      </div>
+  </div>
+</main>
+
+<div id="modal-seguidores" class="modal">
+  <div class="modal-content">
+      <h4 class="center">Seguidores</h4>
+      <ul class="collection">
+          <li class="collection-item avatar" *ngFor="let user of seguidores">
+              <app-solicitud [user]="user"></app-solicitud>
+          </li>
+      </ul>
+  </div>
+  <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+  </div>
+</div>
+
+<div id="modal-siguiendo" class="modal">
+  <div class="modal-content">
+      <h4 class="center">Siguiendo</h4>
+      <ul class="collection">
+          <li class="collection-item avatar" *ngFor="let user of siguiendo">
+              <app-solicitud [user]="user"></app-solicitud>
+          </li>
+      </ul>
+  </div>
+  <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+  </div>
+</div>
+
+<div id="modal-perfil" class="modal">
+  <div class="modal-content">
+      <h4 class="center">Perfil</h4>
+      <div class="row">
+        <app-usuario-editar></app-usuario-editar>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+  </div>
+</div>

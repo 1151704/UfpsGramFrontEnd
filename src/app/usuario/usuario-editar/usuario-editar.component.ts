@@ -5,12 +5,14 @@ import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
-import { tokenKey } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-usuario-editar',
   templateUrl: './usuario-editar.component.html',
-  styleUrls: ['./usuario-editar.component.css']
+  styleUrls: ['./usuario-editar.component.css'],
+  host: {
+    class: 'col s12 m6 offset-m3'
+  }
 })
 export class UsuarioEditarComponent implements OnInit {
 
@@ -68,9 +70,7 @@ export class UsuarioEditarComponent implements OnInit {
             title: 'Usuario actualizado',
             type: 'success'
           }).then((result) => {
-            if (result.value) {
-              this.router.navigate(['/app']);
-            }
+              this.router.navigate(['/main/perfil']);
           });
         },
         error => {

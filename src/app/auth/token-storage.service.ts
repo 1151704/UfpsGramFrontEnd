@@ -92,7 +92,7 @@ export class TokenStorageService {
           type: 'info'
         }).then((result) => {
           if (result.value) {
-            this.router.navigate(['auth/login']);
+            this.router.navigate(['inicio/signin']);
           }
         });
       }

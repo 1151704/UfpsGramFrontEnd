@@ -1,0 +1,15 @@
+<nav class="teal">
+  <div class="nav-wrapper container">
+      <a [routerLink]="[ '/inicio/' ]" class="brand-logo">Ufpsgram</a>
+      <a data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+          <li><a [routerLink]="[ '/inicio/signin' ]" >Ingresar</a></li>
+          <li><a [routerLink]="[ '/inicio/signup' ]">Registrarse</a></li>
+      </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-menu">
+  <li><a [routerLink]="[ '/inicio/signin' ]">Ingresar</a></li>
+  <li><a [routerLink]="[ '/inicio/signup' ]">Registrarse</a></li>
+</ul>

@@ -1,0 +1,21 @@
+<div>
+  <nav class="teal">
+    <div class="nav-wrapper container">
+      <div class="input-field">
+        <input placeholder="Buscar" id="search" #filtro (keyup.enter)="efectuarBusqueda(filtro.value)" type="search" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </div>
+  </nav>
+</div>
+<main class="container">
+  <ul class="collection with-header">
+    <li class="collection-header">
+      <h4>Se encontraron {{usuarios.length}} resultados</h4>
+    </li>
+    <li class="collection-item avatar" *ngFor="let user of usuarios">
+      <app-solicitud [user]="user"></app-solicitud>
+    </li>
+  </ul>
+</main>

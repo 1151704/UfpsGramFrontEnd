@@ -1,0 +1,13 @@
+<img src="assets/image/user-default.png" alt="" class="circle">
+<span class="title">{{user.usuario.username}}</span>
+<p>{{user.usuario.nombre}}</p>
+<div class="secondary-content ">
+  <a (click)="dejarDeSeguir(user)" *ngIf="user.siguiendo" class="red waves-effect waves-light btn-small">Dejar de
+    seguir</a>
+  <a *ngIf="user.pendiente" class="blue-grey btn-small">Pendiente</a>
+  <a (click)="aceptar(user)" *ngIf="user.aceptar" class="waves-effect waves-light btn-small">Aceptar</a>
+  <a (click)="seguir(user)" *ngIf="user.seguidor && !user.siguiendo && !user.pendiente"
+    class="blue-grey waves-effect waves-light btn-small">Seguir tambien</a>
+  <a (click)="seguir(user)" *ngIf="!user.seguidor && !user.siguiendo && !user.pendiente"
+    class="blue-grey waves-effect waves-light btn-small">Seguir</a>
+</div>

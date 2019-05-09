@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 
-import { API_REST, REST, TOKEN } from '../url.constants';
-import { TokenStorageService } from './token-storage.service';
+import { REST } from '../url.constants';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

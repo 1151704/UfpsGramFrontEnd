@@ -1,0 +1,26 @@
+<div class="section white">
+  <div class="row container">
+      <h2 class="header center-align">Ingreso</h2>
+
+      <div class="row">
+          <form class="col s6 offset-s3" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+              <div class="row">
+                  <div class="input-field col s12">
+                      <input id="username" type="text" class="validate" name="username" [(ngModel)]="form.username" #username="ngModel" required autofocus>
+                      <label for="username">Usuario</label>
+                  </div>
+                  <div class="input-field col s12">
+                      <input id="password" type="password" class="validate" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="3">
+                      <label for="password">Contraseña</label>
+                  </div>
+                  <div class="col s12 center">
+                      <button type="submit" class="waves-effect waves-light btn">Ingresar</button>
+                  </div>
+                  <div class="col s12 center mt10">
+                      <a [routerLink]="[ '/inicio/signup' ]">Registrarse</a>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
