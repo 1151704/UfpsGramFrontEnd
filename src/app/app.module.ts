@@ -11,13 +11,7 @@ import { ApiService } from './core/api.service';
 
 import { AppComponent } from './app.component';
 
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { SingupComponent } from './login/singup/singup.component';
-import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { UsuarioEditarComponent } from './usuario/usuario-editar/usuario-editar.component';
-import { BuscarComponent } from './usuario/buscar/buscar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { InicioSignupComponent } from './inicio-signup/inicio-signup.component';
 import { InicioSigninComponent } from './inicio-signin/inicio-signin.component';
@@ -29,20 +23,14 @@ import { MainPublicacionesComponent } from './main-publicaciones/main-publicacio
 import { MainSolicitudesComponent } from './main-solicitudes/main-solicitudes.component';
 import { MainBuscarComponent } from './main-buscar/main-buscar.component';
 import { MainPerfilComponent } from './main-perfil/main-perfil.component';
-import { MainCuentaComponent } from './main-cuenta/main-cuenta.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { SolicitudComponent } from './solicitud/solicitud.component';
+import { MainUsuarioComponent } from './main-usuario/main-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HomeComponent,
-    HeaderComponent,
-    SingupComponent,
-    PerfilComponent,
     UsuarioEditarComponent,
-    BuscarComponent,
     InicioComponent,
     InicioSignupComponent,
     InicioSigninComponent,
@@ -54,9 +42,9 @@ import { SolicitudComponent } from './solicitud/solicitud.component';
     MainSolicitudesComponent,
     MainBuscarComponent,
     MainPerfilComponent,
-    MainCuentaComponent,
     MainFooterComponent,
     SolicitudComponent,
+    MainUsuarioComponent,
   ],
   imports: [
     BrowserModule,

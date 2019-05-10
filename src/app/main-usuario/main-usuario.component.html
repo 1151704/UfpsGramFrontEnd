@@ -2,12 +2,51 @@
   <nav class="teal ">
     <div class="nav-wrapper container ">
       <a [routerLink]="[ '/main/publicaciones' ]" class="brand-logo">Ufpsgram</a>
+      <ul class="right">
+        <li><a class="dropdown-trigger" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      </ul>
     </div>
   </nav>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a (click)="logout()">Cerrar sessión <i class="material-icons">power_settings_new</i></a></li>
+  </ul>
 </div>
-<main class="container">
+<main class="container" *ngIf="!valido">
+  <div class="row valign-wrapper mb0 ">
+    <div class="col s12 z-depth-1 teal lighten-3">
+      <div class="teal mt10 mb10 lighten-3">No existe el usuario '{{username}}'</div>
+    </div>
+  </div>
+</main>
+<main class="container" *ngIf="valido">
+  <div class="row valign-wrapper mb0 ">
+    <ul class="collection col s12 grey lighten-5 z-depth-1">
+      <li class="collection-item avatar user-avatar">
+        <img src="assets/image/user-default.png" alt="" class="circle">
+        <span class="title">{{info.username}} </span>
+        <div class="row mb0">
+          <div class="col s4 center">
+            <span>{{publicaciones.length}}</span>
+            <p>Publicaciones</p>
+          </div>
+          <div class="col s4 center">
+            <span>{{seguidores}}</span>
+            <p>Seguidores</p>
+          </div>
+          <div class="col s4 center">
+            <span>{{siguiendo}}</span>
+            <p>Siguiendo</p>
+          </div>
+        </div>
+        <p style="transform: translateX(-72px);">{{info.nombre}}</p>
+        <blockquote class="teal" style="transform: translateX(-72px);">{{info.email}}</blockquote>
+      </li>
+    </ul>
+  </div>
+
   <div class="contenedor_publicaciones row">
-    <div class="publicacion col s12" *ngFor="let publicacion of publicaciones; let i=index">
+    <div class="publicacion col s12 pr0 pl0" *ngFor="let publicacion of publicaciones; let i=index">
       <div class="card-panel grey lighten-5 z-depth-1">
         <div class="row valign-wrapper mb0">
           <ul class="collection mb0 mt0 col s12">
@@ -62,6 +101,7 @@
     </div>
   </div>
 </main>
+
 <div id="modal-comentario" class="modal">
   <div class="modal-content">
     <h4 class="center">Comentario</h4>

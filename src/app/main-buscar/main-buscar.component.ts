@@ -3,7 +3,6 @@ import { ApiService } from '../core/api.service';
 
 import Swal from 'sweetalert2';
 import { UsuarioApi } from '../model/usuario-api.model';
-import { Usuario } from '../model/usuario.model';
 import { TokenStorageService } from '../auth/token-storage.service';
 
 @Component({
@@ -26,24 +25,23 @@ export class MainBuscarComponent implements OnInit {
     this.token.validate();
   }
 
-  efectuarBusqueda(f:string) {
+  efectuarBusqueda(f: string) {
     this.filtrado = f;
     this.usuarios = []
 
-    if (this.filtrado && this.filtrado.length >2) {
+    if (this.filtrado && this.filtrado.length > 2) {
 
-    this.apiService.usuarioService.searchUsuarios(this.filtrado).subscribe(
-      data => {
-        this.usuarios = data;
-        console.table(this.usuarios);
-      },
-      error => {
-        Swal.fire({
-          title: 'Error al buscar los usuarios',
-          type: 'error'
-        })
-      }
-    )
+      this.apiService.usuarioService.searchUsuarios(this.filtrado).subscribe(
+        data => {
+          this.usuarios = data;
+        },
+        error => {
+          Swal.fire({
+            title: 'Error al buscar los usuarios',
+            type: 'error'
+          })
+        }
+      )
     } else {
       Swal.fire({
         title: 'Mínimo un filtrado de 3 caracteres',

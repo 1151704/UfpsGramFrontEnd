@@ -2,3 +2,30 @@
   <router-outlet></router-outlet>
   <app-main-footer></app-main-footer>
 </div>
+<a style="bottom: 60px; right: 10px; position: fixed;" id="menu" href="#modal-publicacion"
+  class="modal-trigger pointer btn btn-floating pulse"><i class="material-icons">menu</i></a>
+<div id="modal-publicacion" class="modal">
+  <div class="modal-content">
+    <h4 class="center">Publicación</h4>
+    <form class="" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="row mb0">
+        <div class="input-field col s12">
+            <textarea id="descripcion" maxlength="120" class="materialize-textarea" name="descripcion" [(ngModel)]="form.descripcion"
+            #descripcion="ngModel" required></textarea>
+            <label for="descripcion">Descripción</label>
+        </div>
+        <div class="col s12">
+            <label>Etiquetas</label>
+            <div class="chips" id="etiquetas"></div>
+        </div>
+
+        <div class="col s12 center">
+          <button type="submit" class="waves-effect waves-light btn">Publicar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+  </div>
+</div>

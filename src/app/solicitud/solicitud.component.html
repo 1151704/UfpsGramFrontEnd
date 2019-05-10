@@ -1,5 +1,5 @@
 <img src="assets/image/user-default.png" alt="" class="circle">
-<span class="title">{{user.usuario.username}}</span>
+<span class="title">{{user.usuario.username}} <a [routerLink]="[ '/main/usuario/'+user.usuario.username ]"><i class="material-icons">link</i></a></span>
 <p>{{user.usuario.nombre}}</p>
 <div class="secondary-content ">
   <a (click)="dejarDeSeguir(user)" *ngIf="user.siguiendo" class="red waves-effect waves-light btn-small">Dejar de

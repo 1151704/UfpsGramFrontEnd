@@ -18,6 +18,10 @@ export class UsuarioService {
     return this.http.get<Usuario>(this.baseUrl);
   }
 
+  getUsuario(username: string) {
+    return this.http.get<Usuario>(this.baseUrl+username);
+  }
+
   searchUsuarios(filtro: string) {
     return this.http.get<UsuarioApi[]>(this.baseUrl+"users/"+filtro);
   }
@@ -36,6 +40,14 @@ export class UsuarioService {
 
   getSiguiendo(){
     return this.http.get<UsuarioApi[]>(this.baseUrl+"siguiendo");
+  }
+
+  getTotalSeguidores(username: string){
+    return this.http.get<number>(this.baseUrl+"seguidores/"+username);
+  }
+
+  getTotalSiguiendo(username: string){
+    return this.http.get<number>(this.baseUrl+"siguiendo/"+username);
   }
 
 }

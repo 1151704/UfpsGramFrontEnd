@@ -1,88 +1,159 @@
 <div>
   <nav class="teal ">
-      <div class="nav-wrapper container ">
-          <a [routerLink]="[ '/main/publicaciones' ]" class="brand-logo">Ufpsgram</a>
-          <ul class="right">
-              <li><a class="dropdown-trigger" data-target="dropdown1"><i
-                          class="material-icons right">arrow_drop_down</i></a></li>
-          </ul>
-      </div>
+    <div class="nav-wrapper container ">
+      <a [routerLink]="[ '/main/publicaciones' ]" class="brand-logo">Ufpsgram</a>
+      <ul class="right">
+        <li><a class="dropdown-trigger" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      </ul>
+    </div>
   </nav>
   <ul id="dropdown1" class="dropdown-content">
-      <li><a class="modal-trigger pointer" href="#modal-perfil">Cuenta <i class="material-icons">settings</i></a></li>
-      <li class="divider"></li>
-      <li><a (click)="logout()">Cerrar sessión <i class="material-icons">power_settings_new</i></a></li>
+    <li><a class="modal-trigger pointer" href="#modal-perfil">Cuenta <i class="material-icons">settings</i></a></li>
+    <li class="divider"></li>
+    <li><a (click)="logout()">Cerrar sessión <i class="material-icons">power_settings_new</i></a></li>
   </ul>
 </div>
 <main class="container">
   <div class="row valign-wrapper mb0 ">
-      <ul class="collection col s12 grey lighten-5 z-depth-1">
-          <li class="collection-item avatar user-avatar">
-              <img src="assets/image/user-default.png" alt="" class="circle">
-              <span class="title">{{info.username}}</span>
-              <div class="row mb0">
-                  <div class="col s4 center">
-                      <span>0</span>
-                      <p>Publicaciones</p>
-                  </div>
-                  <div class="col s4 center">
-                      <span class="modal-trigger pointer" href="#modal-seguidores">{{seguidores.length}}</span>
-                      <p>Seguidores</p>
-                  </div>
-                  <div class="col s4 center">
-                      <span class="modal-trigger pointer" href="#modal-siguiendo">{{siguiendo.length}}</span>
-                      <p>Siguiendo</p>
-                  </div>
-              </div>
-              <p style="transform: translateX(-72px);">{{info.nombre}}</p>
-              <blockquote class="teal" style="transform: translateX(-72px);">{{info.email}}</blockquote>
-          </li>
-      </ul>
+    <ul class="collection col s12 grey lighten-5 z-depth-1">
+      <li class="collection-item avatar user-avatar">
+        <img src="assets/image/user-default.png" alt="" class="circle">
+        <span class="title">{{info.username}}</span>
+        <div class="row mb0">
+          <div class="col s4 center">
+            <span>{{publicaciones.length}}</span>
+            <p>Publicaciones</p>
+          </div>
+          <div class="col s4 center">
+            <span class="modal-trigger pointer" href="#modal-seguidores">{{seguidores.length}}</span>
+            <p>Seguidores</p>
+          </div>
+          <div class="col s4 center">
+            <span class="modal-trigger pointer" href="#modal-siguiendo">{{siguiendo.length}}</span>
+            <p>Siguiendo</p>
+          </div>
+        </div>
+        <p style="transform: translateX(-72px);">{{info.nombre}}</p>
+        <blockquote class="teal" style="transform: translateX(-72px);">{{info.email}}</blockquote>
+      </li>
+    </ul>
   </div>
 
-  <div class="row valign-wrapper mb0 ">
-      <div class="col s12 z-depth-1 teal lighten-3">
-          <div class="teal mt10 mb10 lighten-3">Módulo de publicaciones sin realizar</div>
+  <div class="contenedor_publicaciones row">
+    <div class="publicacion col s12 pr0 pl0" *ngFor="let publicacion of publicaciones; let i=index">
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="row valign-wrapper mb0">
+          <ul class="collection mb0 mt0 col s12">
+            <li class="collection-item avatar user-avatar">
+              <img src="assets/image/user-default.png" alt="" class="circle">
+              <span class="title">{{publicacion.usuario.username}}</span>
+              <p>{{publicacion.usuario.nombre}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="row ">
+          <div class="col s12">
+            <span>{{publicacion.descripcion}}</span>
+          </div>
+        </div>
+        <div class="row mb0">
+          <div class="col s12">
+            <span class="fx-inline">
+              <span class="new badge" data-badge-caption=""
+                *ngFor="let etiqueta of publicacion.etiquetas">{{etiqueta.mensaje}}</span>
+            </span>
+          </div>
+          <div class="col s12">
+            <div class="right-align">
+              <span>{{publicacion.fechaPublicacion}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mb0">
+          <div class="col s12">
+            <span class="fx-inline">
+              <span>{{publicacion.comentarios.length}}</span>
+              <a class="blue-grey-text"><i class="material-icons">comment</i></a>
+              <span href="#modal-comentario" (click)="indexSeleccionado = i"
+                class="new badge pointer modal-trigger pointer" data-badge-caption="add"></span>
+            </span>
+          </div>
+        </div>
+        <div class="row mb0">
+          <div class="col s12">
+            <ul class="collection mb0 mt0">
+              <li class="collection-item avatar" *ngFor="let comentario of publicacion.comentarios">
+                <img src="assets/image/user-default.png" alt="" class="circle">
+                <span class="title">{{comentario.usuario.username}} <a [routerLink]="[ '/main/usuario/'+comentario.usuario.username ]"><i class="material-icons">link</i></a></span>
+                <p>{{comentario.comentario}}</p>
+                <span>{{comentario.fechaPublicacion}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </main>
 
 <div id="modal-seguidores" class="modal">
   <div class="modal-content">
-      <h4 class="center">Seguidores</h4>
-      <ul class="collection">
-          <li class="collection-item avatar" *ngFor="let user of seguidores">
-              <app-solicitud [user]="user"></app-solicitud>
-          </li>
-      </ul>
+    <h4 class="center">Seguidores</h4>
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor="let user of seguidores">
+        <app-solicitud [user]="user"></app-solicitud>
+      </li>
+    </ul>
   </div>
   <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+    <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
   </div>
 </div>
 
 <div id="modal-siguiendo" class="modal">
   <div class="modal-content">
-      <h4 class="center">Siguiendo</h4>
-      <ul class="collection">
-          <li class="collection-item avatar" *ngFor="let user of siguiendo">
-              <app-solicitud [user]="user"></app-solicitud>
-          </li>
-      </ul>
+    <h4 class="center">Siguiendo</h4>
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor="let user of siguiendo">
+        <app-solicitud [user]="user"></app-solicitud>
+      </li>
+    </ul>
   </div>
   <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+    <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+  </div>
+</div>
+
+<div id="modal-comentario" class="modal">
+  <div class="modal-content">
+    <h4 class="center">Comentario</h4>
+    <form class="" name="form" (ngSubmit)="f.form.valid && addComentario()" #f="ngForm" novalidate>
+      <div class="row mb0">
+        <div class="input-field col s12">
+          <textarea id="descripcion" maxlength="120" class="materialize-textarea" name="descripcion"
+            [(ngModel)]="form.descripcion" #descripcion="ngModel" required></textarea>
+          <label for="descripcion">Comentario</label>
+        </div>
+        <div class="col s12 center">
+          <button type="submit" class="btn waves-effect waves-teal">Comentar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect  btn-flat">Cerrar</a>
   </div>
 </div>
 
 <div id="modal-perfil" class="modal">
   <div class="modal-content">
-      <h4 class="center">Perfil</h4>
-      <div class="row">
-        <app-usuario-editar></app-usuario-editar>
-      </div>
+    <h4 class="center">Perfil</h4>
+    <div class="row">
+      <app-usuario-editar></app-usuario-editar>
+    </div>
   </div>
   <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
+    <a class="modal-close waves-effect waves-light btn-flat">Cerrar</a>
   </div>
 </div>

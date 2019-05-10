@@ -1,5 +1,5 @@
 //export const REST = 'https://omarrm-ufpsgram-backend.herokuapp.com/';
-export const REST = 'http://localhost:8080/';
+export const REST = 'http://localhost:8082/';
 export const API_REST = REST+"api/";
 export const TOKEN = {
    TOKEN_KEY: 'AuthToken',
