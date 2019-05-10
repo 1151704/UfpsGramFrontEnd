@@ -9,5 +9,3 @@ export const TOKEN = {
    DATE_KEY: 'AuthDate',
    AUTHORITIES_KEY: 'AuthAuthorities'
 }
-
-// "https://omarrm-ufpsgram-backend.herokuapp.com/";

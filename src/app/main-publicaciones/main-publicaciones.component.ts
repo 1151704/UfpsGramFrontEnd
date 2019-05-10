@@ -28,10 +28,14 @@ export class MainPublicacionesComponent implements OnInit {
     this.token.validate();
     this.getPublicaciones();
 
+    // media
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, {});
+
   }
 
   getPublicaciones() {
-    this.apiService.publicacionService.misPublicaciones().subscribe(
+    this.apiService.publicacionService.publicacionesAmigos().subscribe(
       data => this.publicaciones = data
     )
   }

@@ -8,6 +8,7 @@ export class Publicacion {
   descripcion: string
   fechaPublicacion: string
   usuario: Usuario
+  urlImagen: string
   etiquetas: Etiqueta[];
   comentarios: Comentario[]
 

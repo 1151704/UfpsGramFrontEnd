@@ -27,6 +27,10 @@ export class PublicacionService {
     return this.http.get<Publicacion[]>(this.baseUrl + username)
   }
 
+  publicacionesAmigos() {
+    return this.http.get<Publicacion[]>(this.baseUrl+'amigos')
+  }
+
   comentar(idPublicacion: number, comentario: ComentarioGuardar) {
     return this.http.post<Publicacion>(this.baseUrl + 'comentar/' + idPublicacion, comentario)
   }

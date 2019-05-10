@@ -6,6 +6,9 @@
   </nav>
 </div>
 <main class="container">
+  <div class="row">
+    <div (click)="getPublicaciones()" class="card center-align teal lighten-4 white-text pointer "><i class="material-icons centered">refresh</i></div>
+  </div>
   <div class="contenedor_publicaciones row">
     <div class="publicacion col s12" *ngFor="let publicacion of publicaciones; let i=index">
       <div class="card-panel grey lighten-5 z-depth-1">
@@ -22,6 +25,16 @@
           <div class="col s12">
             <span>{{publicacion.descripcion}}</span>
           </div>
+        </div>
+        <div class="row mb0" *ngIf="publicacion.urlImagen">
+            <div class="col s12">
+                <div class="materialboxed">
+                    <div class="center-align">
+                        <img [src]="publicacion.urlImagen" alt="Imagen"
+                            class="rounded responsive-img">
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row mb0">
           <div class="col s12">

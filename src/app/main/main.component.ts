@@ -37,6 +37,7 @@ export class MainComponent implements OnInit {
     let publicacion = new PublicacionGuardar();
     publicacion.descripcion = this.form.descripcion;
     publicacion.etiquetas = etiquetas;
+    publicacion.imagen = this.form.imagen;
 
     this.apiService.publicacionService.save(publicacion).subscribe(
       data => {

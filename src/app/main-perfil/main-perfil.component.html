@@ -57,6 +57,16 @@
             <span>{{publicacion.descripcion}}</span>
           </div>
         </div>
+        <div class="row mb0" *ngIf="publicacion.urlImagen">
+            <div class="col s12">
+                <div class="materialboxed">
+                    <div class="center-align">
+                        <img [src]="publicacion.urlImagen" alt="Imagen"
+                            class="rounded responsive-img">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row mb0">
           <div class="col s12">
             <span class="fx-inline">

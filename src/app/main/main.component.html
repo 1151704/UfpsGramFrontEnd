@@ -14,6 +14,11 @@
             #descripcion="ngModel" required></textarea>
             <label for="descripcion">Descripción</label>
         </div>
+        <div class="input-field col s12">
+            <input id="imagen" type="text" class="validate" name="imagen" [(ngModel)]="form.imagen"
+              #imagen="ngModel">
+            <label for="imagen">Url http de imagen</label>
+          </div>
         <div class="col s12">
             <label>Etiquetas</label>
             <div class="chips" id="etiquetas"></div>
